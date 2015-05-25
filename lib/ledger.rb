@@ -1,6 +1,6 @@
 require 'date'
 
-class Transaction
+class Ledger
 
   attr_reader :date
 
