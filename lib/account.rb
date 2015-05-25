@@ -8,7 +8,7 @@ class Account
 
   def initialize
     @balance = 0
-    @account_num = DateTime.now.strftime('%Q')
+    @account_num = self.object_id #In a normal situation, I would create a number and stored it in a database
   end
 
   def credit(amount)

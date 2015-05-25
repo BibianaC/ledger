@@ -24,7 +24,12 @@ describe Account do
   end
 
   it "should have an account number" do
-    expect(account.account_num).to eq DateTime.now.strftime('%Q')
+    expect(account.account_num).to eq account.object_id
+  end
+
+  it "should have a unique account number" do
+    account2 = Account.new
+    expect(account.account_num).not_to eq account2.account_num
   end
 
 end
