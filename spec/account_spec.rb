@@ -23,4 +23,8 @@ describe Account do
     expect(account.balance).to eq 0
   end
 
+  it "should have an account number" do
+    expect(account.account_num).to eq DateTime.now.strftime('%Q')
+  end
+
 end

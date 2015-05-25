@@ -1,11 +1,14 @@
+require 'date'
+
 class Account
 
-  attr_reader :balance
+  attr_reader :balance, :account_num
 
   MIN_BALANCE = -100
 
   def initialize
     @balance = 0
+    @account_num = DateTime.now.strftime('%Q')
   end
 
   def credit(amount)
