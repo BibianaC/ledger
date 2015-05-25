@@ -14,7 +14,7 @@ class Account
 
   def debit(amount)
     if (@balance - amount) < MIN_BALANCE
-      raise "Your balance cannot be below -100, your current balance is #{@balance}"
+      raise "Your balance cannot be below #{MIN_BALANCE}, your current balance is #{@balance}"
     else
       @balance =- amount
     end
