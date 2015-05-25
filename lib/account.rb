@@ -6,14 +6,13 @@ class Account
 
   def initialize
     @balance = 0
-    @account_num = self.object_id
   end
 
-  def credit(amount, account_num)
+  def credit(amount)
     @balance =+ amount
   end
 
-  def debit(amount, account_num)
+  def debit(amount)
     if (@balance - amount) < MIN_BALANCE
       raise "Your balance cannot be below #{MIN_BALANCE}, your current balance is #{@balance}"
     else
