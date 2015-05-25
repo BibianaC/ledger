@@ -11,7 +11,11 @@ class Account
   end
 
   def debit(amount)
-    @balance =- amount
+    if (@balance - amount) < -100
+      raise "Your balance cannot be below -100, your current balance is #{@balance}"
+    else
+      @balance =- amount
+    end
   end
 
 end
