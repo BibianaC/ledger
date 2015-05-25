@@ -9,14 +9,14 @@ class Account
   end
 
   def credit(amount)
-    @balance =+ amount
+    @balance += amount
   end
 
   def debit(amount)
     if (@balance - amount) < MIN_BALANCE
       raise "Your balance cannot be below #{MIN_BALANCE}, your current balance is #{@balance}"
     else
-      @balance =- amount
+      @balance -= amount
     end
   end
 
