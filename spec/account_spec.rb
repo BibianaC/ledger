@@ -9,17 +9,17 @@ describe Account do
   end
 
   it "should be able to be credited" do
-    account.credit(10)
+    account.credit(10, account.object_id)
     expect(account.balance).to eq 10
   end
 
   it "should be able to be debited" do
-    account.debit(10)
+    account.debit(10, account.object_id)
     expect(account.balance).to eq -10
   end
 
   it "should not have a balance below -100" do
-    expect(lambda {account.debit(150)}).to raise_error(RuntimeError, "Your balance cannot be below -100, your current balance is 0")
+    expect(lambda {account.debit(150, account.object_id)}).to raise_error(RuntimeError, "Your balance cannot be below -100, your current balance is 0")
     expect(account.balance).to eq 0
   end
 
