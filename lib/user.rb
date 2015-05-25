@@ -17,7 +17,9 @@ class User
   end
 
   def self.lookup_user(name)
-    @@usermap[name]
+    user_name = @@usermap[name]
+    raise "Unknown receiver name #{receiver}" if user_name.nil?
+    user_name
   end
 
 end
