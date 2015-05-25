@@ -1,5 +1,3 @@
-require 'date'
-
 class Account
 
   attr_reader :balance, :account_num
@@ -8,7 +6,7 @@ class Account
 
   def initialize
     @balance = 0
-    @account_num = self.object_id #In a normal situation, I would create a number and stored it in a database
+    @account_num = self.object_id
   end
 
   def credit(amount)
