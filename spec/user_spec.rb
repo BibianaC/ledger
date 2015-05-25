@@ -6,6 +6,5 @@ describe User do
     user = User.new('John')
     expect(user.name).not_to be_empty
   end
-
-
+  
 end
