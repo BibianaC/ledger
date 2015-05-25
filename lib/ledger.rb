@@ -16,4 +16,7 @@ class Ledger
     receiver.account.credit(amount)
   end
 
+  def add_transaction(date, amount, sender_name, receiver_name)
+    transfer(amount, sender_name, receiver_name)
+  end
 end
