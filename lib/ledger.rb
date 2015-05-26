@@ -6,7 +6,6 @@ class Ledger
   attr_reader :date
 
   def initialize
-    @date = DateTime.now.strftime('%Y/%m/%d')
     @history = Hash.new
   end
 
@@ -20,12 +19,10 @@ class Ledger
   def add_transaction(date, amount, sender_name, receiver_name)
     transfer(amount, sender_name, receiver_name)
     transaction_date = DateTime.strptime(date, '%Y/%m/%d')
-    if @history[sender_name].nil?
-      @history[sender_name] = Hash.new
-    end
-    if @history[receiver_name].nil?
-      @history[receiver_name] = Hash.new
-    end
+
+    @history[sender_name] = Hash.new if @history[sender_name].nil?
+    @history[receiver_name] = Hash.new if @history[receiver_name].nil?
+
     @history[sender_name][transaction_date] = User.lookup_user(sender_name).account.balance
     @history[receiver_name][transaction_date] = User.lookup_user(receiver_name).account.balance
   end
@@ -36,7 +33,7 @@ class Ledger
       @history[principal][target_date]
     else
       latest_date = nil
-      @history[principal].each do |date, balance|
+      @history[principal].each_key do |date|
         if latest_date.nil?
           latest_date = date
         elsif latest_date < date && date < target_date

@@ -6,10 +6,6 @@ describe Ledger do
   let(:user1) { User.new('John') }
   let(:user2) { User.new('Mary') }
   let(:user3) { User.new('Supermarket') }
-  
-  it "should have a date" do
-    expect(ledger.date).to eq DateTime.now.strftime('%Y/%m/%d')
-  end
 
   it "should transfer money from one account to another one" do
     ledger.transfer(10, user1.name, user2.name)
