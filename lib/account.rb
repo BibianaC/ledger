@@ -2,7 +2,7 @@ class Account
 
   attr_reader :balance, :account_num
 
-  MIN_BALANCE = -100
+  MAX_NEGATIVE_BALANCE = -100
 
   def initialize
     @balance = 0
@@ -13,8 +13,8 @@ class Account
   end
 
   def debit(amount)
-    if (@balance - amount) < MIN_BALANCE
-      raise "Your balance cannot be below #{MIN_BALANCE}, your current balance is #{@balance}"
+    if (@balance - amount) < MAX_NEGATIVE_BALANCE
+      raise "Your balance cannot be below #{MAX_NEGATIVE_BALANCE}, your current balance is #{@balance}"
     else
       @balance -= amount
     end
