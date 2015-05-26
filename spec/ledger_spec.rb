@@ -28,4 +28,12 @@ describe Ledger do
     expect(user3.account.balance).to eq 50
   end
 
+  it "should be able to provide a balance for a given date" do
+    user1 = User.new('John')
+    user2 = User.new('Mary')
+    ledger.add_transaction('2015/05/12', 10, 'John', 'Mary')
+    ledger.add_transaction('2015/05/15', 50, 'Mary', 'John')
+    expect(ledger.lookup_balance('2015/05/12', 'John')).to eq -10
+    expect(ledger.lookup_balance('2015/05/16', 'Mary')).to eq -40
+  end
 end
